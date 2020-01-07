@@ -1,17 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  //- p Welcome to #{JSON.stringify(imgArr)}
+  h1 Welcome to MHM webcam archive
+  .slidecontainer
+    .buttonContainer.center
+      button.play#play play
+      button.pause#pause pause
+      //- button.forward#forward forward
+      //- button.backward#backward backward
+  p.center timeline
+    input.fw#timeline(type="range", name="" value="100")
+
 
   script.
     var data = !{JSON.stringify(imgArr)}
-
-    //- console.log(data)
-
   script
     include ./file.js
-
-
-
-  //- - console.log(imgArr)

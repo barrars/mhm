@@ -1,38 +1,52 @@
-// console.log(data)
+var play
+
+const playButton = document.getElementById("play");
+const pauseButton = document.getElementById("pause");
+const forwardButton = document.getElementById("forward");
+const backwardButton = document.getElementById("backward");
+const timeline = document.getElementById("timeline");
 
 for (const key in data) {
-  var img = new Image()
-  img.id = key
-  img.src = `images/${key}/${data[key][1]}`
-  img.style.width = 250 + 'px'
-  document.body.append(img)
+  var img = new Image();
+  img.id = key;
+  img.src = `images/${key}/${data[key][31]}`;
+  img.style.width = 250 + "px";
+  document.body.append(img);
 }
 
-var images = document.getElementsByTagName('img')
-let i = 0
+var images = document.getElementsByTagName("img");
+let i = 0;
+
+timeline.addEventListener('input', ()=>{
+i = (Math.floor((timeline.value /100) * data.base.length))
+	clearInterval(play)
+	for (const c of images) {
+		c.src = `images/${c.id}/${data[c.id][i]}`;
+	}
+
+})
 
 function animate () {
-  for (const c of images) {
-    c.src = `images/${c.id}/${data[c.id][i]}`
-    // console.log(c.id)
-    // console.log(c.src)
-  }
+	if (data.base[i + 1]) {
+		timeline.value = 100 *(i / data.base.length)
+		// i = (timeline.value /100) * data.base.length
+		i++;
+	} else {
+		i = 0;
+	}
+	for (const c of images) {
+		c.src = `images/${c.id}/${data[c.id][i]}`;
+	}
 }
 
-setInterval(() => {
-  // console.log('-------------------------------------')
-  // console.log(i)
+playButton.addEventListener("click", () => {
+  play = setInterval(animate, 500);
 
-  if (data.base[i + 1]) {
-    i++
-  } else {
-    i = 0
-  }
-  animate()
-}, 500)
+});
+var hello
+pauseButton.addEventListener("click", () => {
+	console.log(i);
+	clearInterval(play)
+});
 
-// images.item(i).src =
-// `images/${images.item(i).id}/${data[images.item(i).id][i]}`
-
-// `images/${images.item(i).id}/${data[images.item(i).id][i]}`
 
