@@ -2,13 +2,19 @@ extends layout
 
 block content
   h1 Welcome to MHM webcam archive
+  //- .conditions(data-conditions="snow")
+  //- .conditions(data-conditions="wind") wind
+  //- .conditions(data-conditions="clear") clear
   .slidecontainer
     .buttonContainer.center
       button.play#play play
       button.pause#pause pause
       //- button.forward#forward forward
       //- button.backward#backward backward
-  p.center#timeStamp timeline
+  .flex.center
+    span.center#timeStamp
+    span#conditions(data-conditions='')
+
   input.fw#timeline(type="range" value="0")
 
   script.

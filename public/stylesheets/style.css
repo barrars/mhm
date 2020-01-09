@@ -1,6 +1,11 @@
+@font-face {
+	font-family: weathericons;
+	src: url(weathericons.woff) format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -16,4 +21,89 @@ a {
 }
 button{
 	margin: 10px;
+}
+
+#conditions{
+	font-family: weathericons;
+
+}
+
+[data-conditions=partly-cloudy]:before {
+	content: "\f00c"
+}
+
+[data-conditions=partly-cloudy-night]:before {
+	content: "\f031"
+}
+
+[data-conditions=clear]:before {
+	content: "\f00d"
+}
+
+[data-conditions=clear-night]:before {
+	content: "\f077"
+}
+
+[data-conditions=overcast]:before {
+	content: "\f013"
+}
+
+[data-conditions=fog]:before {
+	content: "\f014"
+}
+
+[data-conditions=freezing-rain]:before,[data-conditions=hail]:before {
+	content: "\f015"
+}
+
+[data-conditions=rain-snow-mix]:before {
+	content: "\f006"
+}
+
+[data-conditions=rain-snow-mix-night]:before {
+	content: "\f026"
+}
+
+[data-conditions=showers]:before {
+	content: "\f01a"
+}
+
+[data-conditions=thunderstorm-night]:before,[data-conditions=thunderstorm]:before {
+	content: "\f01e"
+}
+
+[data-conditions=snow]:before {
+	content: "\f01b"
+}
+
+[data-conditions=wind]:before {
+	content: "\f050"
+}
+
+[data-conditions=light-rain]:before {
+	content: "\f00b"
+}
+
+[data-conditions=light-rain-night]:before {
+	content: "\f02b"
+}
+
+[data-conditions=rain]:before {
+	content: "\f019"
+}
+
+[data-conditions=sun-cloud-snow]:before {
+	content: "\f00a"
+}
+
+[data-conditions=rain-and-snow]:before {
+	content: "\e601"
+}
+
+[data-conditions=pineapple]:before {
+	content: "\e619"
+}
+
+[data-conditions=heavy-snow]:before {
+	content: "\e616"
 }

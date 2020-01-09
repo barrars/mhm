@@ -6,8 +6,10 @@ const pauseButton = document.getElementById("pause");
 const forwardButton = document.getElementById("forward");
 const backwardButton = document.getElementById("backward");
 const timeline = document.getElementById("timeline");
+const conditions = document.getElementById("conditions");
 const timeStamp = document.getElementById("timeStamp");
 const images = document.getElementsByTagName("img");
+const {date, temp, wind, condition} = weather[i]
 for (const key in data) {
   var img = new Image();
   img.id = key;
@@ -16,12 +18,16 @@ for (const key in data) {
   document.body.append(img);
 }
 timeline.range = data.base.length;
+timeStamp.innerText = `${date} | ${temp} | ${wind} | ${condition} |`
+conditions.setAttribute('data-conditions', condition.toLowerCase())
 timeline.addEventListener("input", () => {
   i = Math.floor((timeline.value / 100) * data.base.length);
   clearInterval(play);
   if (data.base[i]) {
     isPlaying = false;
-		timeStamp.innerText = `${date} ${temp} ${wind} ${condition}`
+		timeStamp.innerText = `${date} | ${temp} | ${wind} | ${condition} |`
+
+		conditions.setAttribute('data-conditions', condition.toLowerCase())
     for (const c of images) {
       c.src = `images/${c.id}/${data[c.id][i]}`;
     }
@@ -29,9 +35,10 @@ timeline.addEventListener("input", () => {
 });
 function animate() {
 	if (data.base[i + 1]) {
-		const {date, temp, wind, condition} = weather[i]
-    timeStamp.innerText = `${date} ${temp} ${wind} ${condition}`
-    timeline.value = 100 * (i / data.base.length);
+    timeStamp.innerText = `${date} | ${temp} | ${wind} | ${condition} |`
+		timeline.value = 100 * (i / data.base.length);
+		conditions.setAttribute('data-conditions', condition.toLowerCase())
+
     i++;
   } else {
     i = 0;
