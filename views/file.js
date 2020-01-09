@@ -18,7 +18,7 @@ for (const key in data) {
   document.body.append(img);
 }
 timeline.range = data.base.length;
-timeStamp.innerText = `${date} | ${temp} | ${wind} | ${condition} |`
+timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 conditions.setAttribute('data-conditions', condition.toLowerCase())
 timeline.addEventListener("input", () => {
 	const {date, temp, wind, condition} = weather[i]
@@ -26,7 +26,7 @@ timeline.addEventListener("input", () => {
   clearInterval(play);
   if (data.base[i]) {
 		isPlaying = false;
-		timeStamp.innerText = `${date} | ${temp} | ${wind} | ${condition} |`
+		timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 
 		conditions.setAttribute('data-conditions', condition.toLowerCase())
     for (const c of images) {
@@ -37,7 +37,7 @@ timeline.addEventListener("input", () => {
 function animate() {
 	if (data.base[i + 1]) {
 		const {date, temp, wind, condition} = weather[i]
-    timeStamp.innerText = `${date} | ${temp} | ${wind} | ${condition} |`
+    timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 		timeline.value = 100 * (i / data.base.length);
 		conditions.setAttribute('data-conditions', condition.toLowerCase())
 
