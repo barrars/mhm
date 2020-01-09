@@ -8,11 +8,12 @@ block content
       button.pause#pause pause
       //- button.forward#forward forward
       //- button.backward#backward backward
-  p.center timeline
-    input.fw#timeline(type="range", name="" value="100")
-
+  p.center#timeStamp timeline
+  input.fw#timeline(type="range" value="0")
 
   script.
     var data = !{JSON.stringify(imgArr)}
+    var weather = !{JSON.stringify(conditions)}
+    //- console.log(weather)
   script
     include ./file.js
