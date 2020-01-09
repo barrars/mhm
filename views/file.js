@@ -1,3 +1,5 @@
+let isPlaying = false;
+let i = 0;
 var play;
 const playButton = document.getElementById("play");
 const pauseButton = document.getElementById("pause");
@@ -13,7 +15,6 @@ for (const key in data) {
   img.style.width = 250 + "px";
   document.body.append(img);
 }
-let i = 0;
 timeline.range = data.base.length;
 timeline.addEventListener("input", () => {
   i = Math.floor((timeline.value / 100) * data.base.length);
@@ -39,7 +40,6 @@ function animate() {
     c.src = `images/${c.id}/${data[c.id][i]}`;
   }
 }
-let isPlaying = false;
 playButton.addEventListener("click", () => {
   if (!isPlaying) {
     play = setInterval(animate, 200);
