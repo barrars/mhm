@@ -41,20 +41,15 @@ timeline.addEventListener("input", () => {
 function animate() {
 	i++;
 	if (data.base[i]) {
-		// console.log(i);
-
 		const {date, temp, wind, condition} = weather[i] || weather[i-1]
     timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 		timeline.value = i
 		conditions.setAttribute('data-conditions', condition.toLowerCase())
-
+		for (const c of images) {
+			c.src = `images/${c.id}/${data[c.id][i]}`;
+		}
   } else {
     i = 0;
-  }
-  for (const c of images) {
-		// console.log(i);
-
-    c.src = `images/${c.id}/${data[c.id][i]}`;
   }
 }
 playButton.addEventListener("click", () => {
