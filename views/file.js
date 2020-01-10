@@ -18,12 +18,12 @@ for (const key in data) {
   document.body.append(img);
 }
 timeline.setAttribute('max', data.base.length -1)
-console.log(data.base.length);
+// console.log(data.base.length);
 
 timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 conditions.setAttribute('data-conditions', condition.toLowerCase())
 timeline.addEventListener("input", () => {
-	console.log(timeline.value);
+	// console.log(timeline.value);
 
 	const {date, temp, wind, condition} = weather[i] ||weather[i-1]
   i = timeline.value
@@ -41,7 +41,7 @@ timeline.addEventListener("input", () => {
 function animate() {
 	i++;
 	if (data.base[i]) {
-		console.log(i);
+		// console.log(i);
 
 		const {date, temp, wind, condition} = weather[i] || weather[i-1]
     timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
@@ -52,14 +52,14 @@ function animate() {
     i = 0;
   }
   for (const c of images) {
-		console.log(i);
+		// console.log(i);
 
     c.src = `images/${c.id}/${data[c.id][i]}`;
   }
 }
 playButton.addEventListener("click", () => {
   if (!isPlaying) {
-    play = setInterval(animate, 200);
+    play = setInterval(animate, 320);
     isPlaying = true;
   }
 });
