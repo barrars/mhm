@@ -34,7 +34,7 @@ const mhm = () => {
       const output = `./public/images/${key}/${date.valueOf()}.jpg`
       wget.download(src, output)
     }
-  }, 300000)
+  }, 10000)
 }
 
 module.exports = mhm()
