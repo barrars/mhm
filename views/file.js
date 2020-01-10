@@ -21,7 +21,7 @@ timeline.setAttribute('max', data.base.length -1)
 timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 conditions.setAttribute('data-conditions', condition.toLowerCase())
 timeline.addEventListener("input", () => {
-	console.log(timeline.value);
+	// console.log(timeline.value);
 
 	const {date, temp, wind, condition} = weather[i] ||weather[i-1]
   i = timeline.value
@@ -36,7 +36,7 @@ timeline.addEventListener("input", () => {
   }
 });
 function animate() {
-	console.log(i);
+	// console.log(i);
 
 	if (data.sahale[i]) {
 		console.log(i, 'inside if');
