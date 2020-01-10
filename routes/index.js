@@ -8,7 +8,7 @@ const ninjadb = require('ninjadb')
 var imgArr = {}
 router.get('/', function (req, res, next) {
 	const conditions = ninjadb.create('conditions')
-	console.log(conditions.filter().length);
+	// console.log(conditions.filter().length);
   fs.readdir(path.join(__dirname, './../public/images'))
     .then(dir => {
       dir.forEach((cam, i, arr) => {

@@ -24,7 +24,7 @@ const mhm = () => {
 	let temp = $('#ctl17 > section > section > div > div.conditions-snapshot > div.conditions-glance-widget.conditions-current > dl > dd.reading.temperature').text()
 	let wind = $('#ctl17 > section > section > div > div.conditions-snapshot > div.conditions-glance-widget.conditions-at-elevations > div:nth-child(1) > dl > dd.reading.windspeed').text()
 	let condition = $('#ctl17 > section > section > div > div.conditions-snapshot > div.conditions-glance-widget.conditions-current > dl > dd.reading.conditions').text()
-	console.log(temp, wind, condition)
+	// console.log(temp, wind, condition)
 	conditions.push({
 		date:new Date().toLocaleString(),
 		temp,
