@@ -19,7 +19,7 @@ const mhm = () => {
 	let temp = $('dd.reading.temperature').text()
 	let wind = $('dd.reading.windspeed').text() || '0 mph'
 	let condition = $('dd.reading.conditions').attr('data-conditions')
-	console.log(temp, wind, condition)
+	// console.log(temp, wind, condition)
 	conditions.push({
 		date:new Date().toLocaleString(),
 		temp,
