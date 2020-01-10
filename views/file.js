@@ -9,7 +9,7 @@ const timeline = document.getElementById("timeline");
 const conditions = document.getElementById("conditions");
 const timeStamp = document.getElementById("timeStamp");
 const images = document.getElementsByTagName("img");
-const {date, temp, wind, condition} = weather[0]
+const {date, temp, wind, condition} = weather[i-1] || weather[0]
 for (const key in data) {
 	var img = new Image();
   img.id = key;
@@ -17,14 +17,18 @@ for (const key in data) {
   img.style.width = 250 + "px";
   document.body.append(img);
 }
-timeline.range = data.base.length;
+timeline.setAttribute('max', data.base.length -1)
+console.log(data.base.length);
+
 timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 conditions.setAttribute('data-conditions', condition.toLowerCase())
 timeline.addEventListener("input", () => {
-	const {date, temp, wind, condition} = weather[i]
-  i = Math.floor((timeline.value / 100) * data.base.length);
+	console.log(timeline.value);
+
+	const {date, temp, wind, condition} = weather[i] ||weather[i-1]
+  i = timeline.value
   clearInterval(play);
-  if (data.base[i]) {
+  if (data.base[i -1 ]) {
 		isPlaying = false;
 		timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
 
@@ -35,17 +39,21 @@ timeline.addEventListener("input", () => {
   }
 });
 function animate() {
-	if (data.base[i + 1]) {
-		const {date, temp, wind, condition} = weather[i]
+	i++;
+	if (data.base[i]) {
+		console.log(i);
+
+		const {date, temp, wind, condition} = weather[i] || weather[i-1]
     timeStamp.innerText = `${date.toLocaleString()} | ${temp} | ${wind} | ${condition} |`
-		timeline.value = 100 * (i / data.base.length);
+		timeline.value = i
 		conditions.setAttribute('data-conditions', condition.toLowerCase())
 
-    i++;
   } else {
     i = 0;
   }
   for (const c of images) {
+		console.log(i);
+
     c.src = `images/${c.id}/${data[c.id][i]}`;
   }
 }
